@@ -29,6 +29,7 @@ This code creates a fixed banner at the bottom of the page with a dark backgroun
 2. Adding the JavaScript
 The JavaScript code is responsible for displaying the banner based on the user's location and managing cookie consent. Here's the code:
 
+<code>
 
 <script>
 var endpoint = 'https://apip.cc/json';
@@ -53,11 +54,15 @@ xhr.onreadystatechange = function() {
 xhr.open('GET', endpoint, true);
 xhr.send();
 </script>
+</code>
+
+
 This script sends a request to a free API to determine the user's location. If the user is in Europe, it displays the cookie consent message. Otherwise, it hides the banner.
 
 3. Managing Cookie Consent
 To manage cookie consent and ensure the banner doesn't reappear once the user has consented, add the following JavaScript:
 
+<code>
 
 <script>
 // Function to set a cookie
@@ -96,6 +101,7 @@ document.getElementById('CookieNotice').addEventListener('click', function() {
     //alert('Cookie has been set and the div is now hidden for 7 days!');
 });
 </script>
+</code>
 
 
 This code handles setting and retrieving cookies to check if the user has already consented. If they have, the banner is hidden on subsequent visits.
