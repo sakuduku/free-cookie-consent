@@ -7,7 +7,7 @@ Step-by-Step Implementation
 1. Adding the HTML and CSS
 First, you need to create the HTML structure and style the cookie consent banner. Here is the code:
 
-
+<code>
 <style>
 #CookieNotice {
     background: #444;
@@ -22,6 +22,7 @@ First, you need to create the HTML structure and style the cookie consent banner
 }
 </style>
 <div id="CookieNotice"></div>
+</code>
 
 This code creates a fixed banner at the bottom of the page with a dark background and white text.
 
