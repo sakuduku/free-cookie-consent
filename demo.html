@@ -1,0 +1,83 @@
+<style>
+#CookieNotice {
+background: #444;
+color: #fff;
+padding: 6px;
+font-size: 13px;
+text-align: center;
+position: fixed;
+bottom: 0;
+width: 100%;
+z-index: 10;
+}
+</style>
+
+<div id="CookieNotice"></div>
+
+<script>
+var endpoint = 'https://apip.cc/json';
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+var response = JSON.parse(this.responseText);
+if(response.status !== 'success') {
+console.log('Query failed: ' + response.message);
+return;
+}
+var xcookie = document.getElementById('CookieNotice');
+switch(response.ContinentCode) {
+case "EU":
+xcookie.innerHTML = 'We value your privacy. We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking this notice, your consent to our use of cookies.';
+break;
+default:
+xcookie.innerHTML = '<style>#CookieNotice {display:none}</style>';
+}
+}
+};
+xhr.open('GET', endpoint, true);
+xhr.send();
+</script>
+
+
+<script>
+// Function to set a cookie
+function setCookie(name, value, days) {
+let expires = "";
+if (days) {
+const date = new Date();
+date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+expires = "; expires=" + date.toUTCString();
+}
+document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+// Function to get a cookie
+function getCookie(name) {
+const nameEQ = name + "=";
+const ca = document.cookie.split(';');
+for(let i = 0; i < ca.length; i++) {
+let c = ca[i];
+while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+}
+return null;
+}
+
+// Check if the cookie exists on page load
+window.onload = function() {
+if (getCookie('OkCookie') === 'clicked') {
+document.getElementById('CookieNotice').style.display = 'none';
+}
+};
+
+// Add event listener to the div
+document.getElementById('CookieNotice').addEventListener('click', function() {
+// Set a cookie named 'OkCookie' with the value 'clicked' that expires in 7 days
+setCookie('OkCookie', 'clicked', 7);
+
+// Hide the div after it is clicked
+this.style.display = 'none';
+
+//alert('Cookie has been set and the div is now hidden for 7 days!');
+});
+</script>
