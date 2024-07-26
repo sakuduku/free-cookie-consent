@@ -7,7 +7,7 @@ Step-by-Step Implementation
 1. Adding the HTML and CSS
 First, you need to create the HTML structure and style the cookie consent banner. Here is the code:
 
-<code>
+<code><pre>
 <style>
 #CookieNotice {
     background: #444;
@@ -22,15 +22,14 @@ First, you need to create the HTML structure and style the cookie consent banner
 }
 </style>
 <div id="CookieNotice"></div>
-</code>
+</pre></code>
 
 This code creates a fixed banner at the bottom of the page with a dark background and white text.
 
 2. Adding the JavaScript
 The JavaScript code is responsible for displaying the banner based on the user's location and managing cookie consent. Here's the code:
 
-<code>
-
+<code><pre>
 <script>
 var endpoint = 'https://apip.cc/json';
 var xhr = new XMLHttpRequest();
@@ -54,7 +53,7 @@ xhr.onreadystatechange = function() {
 xhr.open('GET', endpoint, true);
 xhr.send();
 </script>
-</code>
+</pre></code>
 
 
 This script sends a request to a free API to determine the user's location. If the user is in Europe, it displays the cookie consent message. Otherwise, it hides the banner.
@@ -62,8 +61,7 @@ This script sends a request to a free API to determine the user's location. If t
 3. Managing Cookie Consent
 To manage cookie consent and ensure the banner doesn't reappear once the user has consented, add the following JavaScript:
 
-<code>
-
+<code><pre>
 <script>
 // Function to set a cookie
 function setCookie(name, value, days) {
@@ -101,7 +99,7 @@ document.getElementById('CookieNotice').addEventListener('click', function() {
     //alert('Cookie has been set and the div is now hidden for 7 days!');
 });
 </script>
-</code>
+</pre></code>
 
 
 This code handles setting and retrieving cookies to check if the user has already consented. If they have, the banner is hidden on subsequent visits.
@@ -112,3 +110,6 @@ JavaScript for Location Detection: Uses an API to check if the user is in Europe
 Cookie Management: Sets a cookie when the user clicks the banner, hiding it for 7 days.
 Conclusion
 This implementation provides a straightforward, free, and unlimited way to display a cookie consent banner. By integrating this code into your website, you can ensure compliance with privacy laws and improve user experience.
+
+
+<p>Source: <a href="https://apip.cc/display-cookie-banner-consent-eu-free-unlimited.html">How to Display Cookie Consent Banner for EU users, Free and Unlimited</a></p>
